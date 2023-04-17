@@ -30,6 +30,7 @@ h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: inherit;}
 	--scrollBar: #DEF2F1;
 	--neomorphism: rgba(222, 242, 241, 0.2); // в HEX - DEF2F1
 	--popup: rgba(0, 0, 0, 0.6);
+	--popupCatalogBg: #17242A;
 }
 svg path {
 	fill:#fff; 
@@ -139,24 +140,11 @@ svg path {
 		span{
 			font-size: 20px;
 			line-height: 24px;
+			font-weight: 600;
 		}
 	}
 	&__item + &__item{
 		margin-top: 20px;
-	}
-	&__social{
-		margin-top: 62px;
-		display: grid;
-		grid-template-columns: repeat(3, 31px);
-		grid-auto-rows: 31px;
-		gap: 24px 39px;
-	}
-	&__link{
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 50%;
-		border: 1px solid var(--second);
 	}
 }
 .form {
@@ -376,8 +364,6 @@ html{
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
-		width: 100%;
-		max-width: 633px;
 		max-height: 872px;
 		overflow-y: auto;
 		unicode-bidi:bidi-override;
@@ -401,7 +387,8 @@ html{
 		justify-content: flex-end;
 		border-radius: 7px;
 		padding: 14px 32px;
-		max-width: max-content;
+		max-width: 634px;
+		align-items: center;
 	}
 	&__card.active{
 		background-color: var(--neomorphism);
@@ -422,6 +409,7 @@ html{
 	&__text {
 		margin-bottom: 15px;
 		text-align: left;
+		font-size: 24px;
 	}
 	&__link {
 		display: block;
@@ -438,6 +426,7 @@ html{
 		max-width: 555px;
 		border-radius: 7px;
 		margin-left: 20px;
+		padding-bottom: 20px;
 		.result__img{
 			img{
 				border-radius: 7px 7px 0px 0px;
@@ -487,6 +476,7 @@ html{
 		align-items: center;
 		.slider__img{
 			img{
+				display: block;
 				width: 100%;
 				height: 100%;
 				clip-path: inset(0 .4% 0 0);
@@ -582,17 +572,22 @@ html{
 			&::before{
 				content: '';
 				display: block;
-				min-width: 4px;
-				min-height: 4px;
+				min-width: 8px;
+				min-height: 8px;
 				background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMyIgaGVpZ2h0PSIzIiB2aWV3Qm94PSIwIDAgMyAzIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8Y2lyY2xlIGN4PSIxLjI1IiBjeT0iMS4yNSIgcj0iMS4yNSIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==');
 				background-repeat: no-repeat;
 				background-size: contain;
 				margin-right: 10px;
-				transform: translateY(8px);
+				transform: translateY(15px);
 			}
 		}
+		li:first-child{
+			margin-left: 8px;
+		}
 		li:last-child{
-			list-style-type: none;
+			&::before{
+				background-image: none;
+			}
 		}
 	}
 	.boxShadow1{
@@ -701,6 +696,7 @@ html{
 	#result{
 		.result__card{
 			border-radius: 7px;
+			background-color: var(--popupCatalogBg);
 			.result__img{
 				img{
 					max-width: 271px;
@@ -718,6 +714,7 @@ html{
 	}
 	.result__title {
 		margin: 10px 0;
+		line-height: 22.5px;
 	}
 	.result__text{
 		width: 100%;
@@ -844,6 +841,17 @@ html{
 	.catalog__card{
 		padding: 14px;
 	}
+	.catalog__text{
+		font-size: 20px;
+	}
+}
+@media (max-width: 1100px) {
+	.catalog__img{
+		margin-right: 20px;
+	}
+	.catalog__text{
+		font-size: 18px;
+	}
 }
 @media (max-width: 1024px) {
 	.header__inner{
@@ -910,6 +918,7 @@ html{
 	}
 	.catalog__card{
 		padding: 6px 15px;
+		max-width: 340px;
 	}
 	.catalog__cards{
 		max-height: 420px;
@@ -996,9 +1005,6 @@ html{
 		}
 		font-size: 12px;
 	}
-	.contacts__social{
-		column-gap: 25px;
-	}
 	.title3{
 		font-size: 14px;
 		line-height: 17px;
@@ -1080,6 +1086,9 @@ html{
 	.boxShadow2 img {
 		max-width: 243px;
 		margin: 0 auto;
+	}
+	.about__info{
+		background: var(--accent) url('../img/icons/formBg2.svg') no-repeat 90% / contain;
 	}
 }
 @media (max-width: 700px) {
@@ -1247,6 +1256,9 @@ html{
 	}
 }
 @media (max-width: 520px) {
+	.header__navigation{
+		display: none;
+	}
 	.logo__img{
 		width: 26px;
 		height: 26px;
@@ -1353,9 +1365,6 @@ html{
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		.contacts__social{
-			margin: 15px 0;
-		}
 		.contacts__item{
 			span{
 				font-weight: 600;
@@ -1367,9 +1376,6 @@ html{
 	}
 	.footer__inner{
 		padding-bottom: 15px;
-	}
-	.contacts__social{
-		gap: 5px 15px;
 	}
 	.about__info{
 		border-radius: 7px;
@@ -1383,13 +1389,21 @@ html{
 	.copy__link{
 		margin: 10px 0 0 0;
 	}
+	.logo{
+		margin: 0 auto;
+	}
+	.header{
+		.hamburger{
+			display: block;
+		}
+	}
+	.about__info{
+		background-image: url('../img/icons/formBg2.svg');
+	}
 }
 @media (max-width: 479px) {
 	.logo__text{
 		margin-left: 4px;
-	}
-	.header__navigation{
-		display: none;
 	}
 	.logo{
 		margin: 0 auto;
@@ -1448,11 +1462,6 @@ html{
 	.about__list{
 		font-size: 12px;
 		line-height: 15px;
-	}
-	.header{
-		.hamburger{
-			display: block;
-		}
 	}
 }
 @media (max-width: 400px) {
